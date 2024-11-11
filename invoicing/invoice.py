@@ -6,6 +6,18 @@ from pathlib import Path
 
 def generate(source_path: str, dest_path: str, image_path: str, product_id: str, product_name: str,
              amount_purchased: str, price_per_unit: str, total_price: str) -> None:
+    """
+    This function converts Excel files with inoice information into PDF invoices.
+
+    :param source_path: path to the folder containing the excel files (without the trailing slash)
+    :param dest_path: path to the folder where the pdf files will be saved (without the trailing slash)
+    :param image_path: path to the image file that will be added to the pdf
+    :param product_id: column name in Excel files containing the product id
+    :param product_name: column name in Excel files containing the product name
+    :param amount_purchased: column name in Excel files containing the amount purchased
+    :param price_per_unit: column name in Excel files containing the price per unit
+    :param total_price: column name in Excel files containing the total price
+    """
     filepaths = glob.glob(f"{source_path}/*.xlsx")
     for filepath in filepaths:
         pdf = FPDF(orientation="P", unit="mm", format="A4")
